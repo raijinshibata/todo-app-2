@@ -1,0 +1,22 @@
+{
+  "name": "todo-app-2",
+  "version": "1.0.0",
+  "description": "１つ目がゴチャゴチャになったからこっちでやるよ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raijinshibata/todo-app-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raijinshibata/todo-app-2/issues"
+  },
+  "homepage": "https://github.com/raijinshibata/todo-app-2#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
