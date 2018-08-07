@@ -12,31 +12,25 @@ app.use(bodyParser.urlencoded({extended: false})); //★追加
 
 var PORT = process.env.PORT || 3000;
 
-// ※トップページ
-app.get("/",(req, res) => {
+var data = {
+    'Taro':'taro@yamada',
+    'Hanako':'hanako@flower',
+    'Sachiko':'sachico@happy',
+    'Ichiro':'ichiro@baseball',
+};
+
+app.get('/',(req, res) => {
     var msg = 'This is Index Page!<br>' 
-        + 'Write a message.';
-    var url = '/other?name=taro&pass=yamada';
+        + '※メッセージを書いて送信して下さい。';
     res.render('index.ejs', 
         {
             title: 'Index', 
             content: msg, 
-            //link:{href:url, text:'※別のページに移動'}
-        });
-});
-
-app.post('/',(req, res) => {
-    var msg = 'This is Posted Page!<br>' +
-        'あなたは「<b>' + req.body.message + 
-        '</b>」と送信しました。';
-    res.render('index.ejs', 
-        {
-            title: 'Posted', 
-            content: msg, 
+            data:data,
         });
 });
 
 
 var sarver = app.listen(PORT, () =>{
-	console.log('Server is runnning!');
+    console.log('Server is runnning!');
 })
