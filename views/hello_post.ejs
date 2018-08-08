@@ -6,16 +6,17 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+<body>
     <head>
         <h1><%= title %></h1>
     </head>
     <div role="main">
-        <p><%- content %></p>
+        <% for(var one in content) { %>
+                <p><%=content[one]%></p>
+            <% } %>
         <form method="post" action="/post">
             <input type="text" name="message">
             <input type="submit" value="送信">
         </form>
     </div>
-  </body>
-</html>
+</body>
