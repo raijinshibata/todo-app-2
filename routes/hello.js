@@ -6,12 +6,16 @@ const MongoClient = mongodb.MongoClient;
 const assert = require('assert');
 
 //ローカル用DB URL
-//const db_url = 'mongodb://127.0.0.1:27017/todoDB';
+//const db_url = 'mongodb://127.0.0.1:27017/toDB';
 // heroku用DB URL
 const db_url =  'mongodb://heroku_3ds27242:gi4da16afn0r2a5p3n87k8p8h1@ds129811.mlab.com:29811/heroku_3ds27242'
 
+//ローカル用DB名
+//const db_name = 'test_db';
 
-var data_list = [];
+//heroku用DB名
+const db_name = 'heroku_3ds27242';
+
 
 router.get('/',(req, res, next) => {
     var data = {
@@ -24,7 +28,7 @@ router.get('/',(req, res, next) => {
 router.post('/post',(req, res, next) => {
     MongoClient.connect(db_url, (err, client) => {
         assert.equal(null, err)
-        const db = client.db('test_db');
+        const db = client.db(db_name);
         console.log("Connected successfully to server")
         db.collection('todo_list', (err, collection) =>{
 
