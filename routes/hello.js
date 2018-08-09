@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
+const assert = require('assert');
+
+const db_url = 'mongodb://127.0.0.1:27017/todoDB';
+
+
 
 var data_list = [];
 
@@ -13,14 +20,36 @@ router.get('/',(req, res, next) => {
 });
 
 router.post('/post',(req, res, next) => {
-    var msg = req.body['message'];
-    data_list.push(msg)
-    var data = {
-        title: 'todo-list',
-        //content: 'あなたは、「' + msg + '」と送信しました。<br>'
-        content: data_list
-    };
-    res.render('hello_post', data);
+    MongoClient.connect(db_url, (err, client) => {
+        assert.equal(null, err)
+        const db = client.db('test_db');
+        console.log("Connected successfully to server")
+        db.collection('todo_list', (err, collection) =>{
+
+        //入力された値をデータベースに格納
+        var new_data = req.body['new_data'];
+         collection.insert({todo: new_data}, (err,result) =>{
+
+         });
+            //データベースからデータを取ってくる
+            collection.find().toArray((err, items) =>{
+                var db_data = items;
+                console.log(db_data);
+                var data = {
+                    title: 'todo-list',
+                    content: db_data
+                };
+                res.render('hello_post', data);
+            });
+
+        });
+        // db.collection("user").deleteMany({'name' : 'yamada'}, function(err, result) {
+        //     if (err) throw err;
+        //     console.log("delete");
+        // });
+
+        client.close();      //db.close()じゃないよ
+    });
 });
 
 module.exports = router;

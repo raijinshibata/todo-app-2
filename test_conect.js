@@ -14,12 +14,22 @@ MongoClient.connect('mongodb://127.0.0.1:27017/myDB', (err, client) => {
     		{name: "ishida", score: 40}
 
     	];
-    	// collection.insert(docs, (err,result) =>{
-    	// 	console.dir(result)
-    	// });
+    // 	// collection.insert(docs, (err,result) =>{
+    // 	// 	console.dir(result)
+    // 	// });
     		collection.find().toArray((err, items) =>{
-    			console.log(items);
+    			//console.log(items);
+                for(var i in items){
+                    console.log(items[i]['name']);
+                }
+                //console.log(items['score']);
     		});
+
     });
+    // db.collection("user").deleteMany({'name' : 'yamada'}, function(err, result) {
+    //     if (err) throw err;
+    //     console.log("delete");
+    // });
+
     client.close()		//db.close()じゃないよ
-})
+});

@@ -12,10 +12,10 @@
     </head>
     <div role="main">
         <% for(var one in content) { %>
-                <p><%=content[one]%></p>
+                <p><%=content[one]['todo']%></p>
             <% } %>
         <form method="post" action="/post">
-            <input type="text" name="message">
+            <input type="text" name="new_data">
             <input type="submit" value="送信">
         </form>
     </div>
