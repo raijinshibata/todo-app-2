@@ -1,0 +1,12 @@
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] MongoDB starting : pid=5239 port=27017 dbpath=/Users/raijin.shibatar//db/db_1 64-bit host=MacBook-Pro-4.local
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] db version v4.0.1
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] git version: 54f1582fc6eb01de4d4c42f26fc133e623f065fb
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] allocator: system
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] modules: none
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] build environment:
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten]     distarch: x86_64
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten]     target_arch: x86_64
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] options: { storage: { dbPath: "/Users/raijin.shibatar//db/db_1" }, systemLog: { destination: "file", path: "db/log/mongodb.log" } }
+2018-08-08T18:24:19.469+0900 I STORAGE  [initandlisten] exception in initAndListen: NonExistentPath: Data directory /Users/raijin.shibatar//db/db_1 not found., terminating
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] now exiting
+2018-08-08T18:24:19.469+0900 I CONTROL  [initandlisten] shutting down with code:100
