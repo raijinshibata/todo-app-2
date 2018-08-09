@@ -6,14 +6,14 @@ const MongoClient = mongodb.MongoClient;
 const assert = require('assert');
 
 //ローカル用DB URL
-const db_url = 'mongodb://127.0.0.1:27017/toDB';
+//const db_url = 'mongodb://127.0.0.1:27017/toDB';
 // heroku用DB URL
-//const db_url =  'mongodb://heroku_3ds27242:gi4da16afn0r2a5p3n87k8p8h1@ds129811.mlab.com:29811/heroku_3ds27242'
+const db_url =  'mongodb://heroku_3ds27242:gi4da16afn0r2a5p3n87k8p8h1@ds129811.mlab.com:29811/heroku_3ds27242'
 
 //ローカル用DB名
-const db_name = 'test_db';
+//const db_name = 'test_db';
 //heroku用DB名
-//const db_name = 'heroku_3ds27242';
+const db_name = 'heroku_3ds27242';
 
 
 router.get('/',(req, res, next) => {
