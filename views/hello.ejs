@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="ja">
   <head>
     <meta http-equiv="content-type"
@@ -6,16 +8,28 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+<body>
     <head>
         <h1><%= title %></h1>
     </head>
     <div role="main">
-        <p><%- content %></p>
+        <form method="post" action="/post">
+        <% for(var one in content) { %>
+
+            <% if(content[one]['completed'] == true){ %>
+                <p><input type="checkbox" name = "item" checked='checked' value= <%= content[one]['todo'] %>>
+                <%=content[one]['todo'] %> </p>
+            <% } else {%>
+                <p><input type="checkbox" name = "item" value= <%= content[one]['todo'] %>>
+                <%=content[one]['todo'] %> </p>
+            <% } %>
+        <% } %>
+        <input type="submit" value="完了済のものを更新する">
+        </form>
+        <br><br><br>
         <form method="post" action="/post">
             <input type="text" name="new_data">
-            <input type="submit" value="送信">
+            <input type="submit" value="新規のものを送信">
         </form>
     </div>
-  </body>
-</html>
+</body>

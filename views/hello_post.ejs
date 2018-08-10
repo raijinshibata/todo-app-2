@@ -15,11 +15,18 @@
     <div role="main">
         <form method="post" action="/post">
         <% for(var one in content) { %>
-                <p><input type="checkbox" name = "item" value= <%= content[one]['todo']%>>
+
+            <% if(content[one]['completed'] == true){ %>
+                <p><input type="checkbox" name = "item" checked='checked' value= <%= content[one]['todo'] %>>
                 <%=content[one]['todo'] %> </p>
+            <% } else {%>
+                <p><input type="checkbox" name = "item" value= <%= content[one]['todo'] %>>
+                <%=content[one]['todo'] %> </p>
+            <% } %>
         <% } %>
-        <input type="submit" value="チェック項目を削除">
+        <input type="submit" value="完了済のものを更新する">
         </form>
+        <br><br><br>
         <form method="post" action="/post">
             <input type="text" name="new_data">
             <input type="submit" value="新規のものを送信">
