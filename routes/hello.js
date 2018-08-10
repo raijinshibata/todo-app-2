@@ -68,7 +68,7 @@ router.post('/post',(req, res, next) => {
             //データベースからデータを取ってくる
             collection.find().toArray((err, items) =>{
                 var db_data = items;
-                console.log(db_data);
+                //console.log(db_data);
 
                 if (typeof new_data === 'undefined'){
                 //チェック更新
@@ -80,19 +80,34 @@ router.post('/post',(req, res, next) => {
                         }
                         for(var i in del_list){
                             //チェックつけたものは完了とする
-                            collection.update({'todo' : del_list[i]}, {$set:{'completed' : true}});
-                            //collection.deleteMany({'todo': del_list[i]});
-                        }
-                        collection.find().toArray((err, items) =>{
-                            var db_data = items;
+                            
+                            collection.updateMany({'todo' : del_list[i]}, {$set:{'completed' : true}}, (err, items) => {
+                                console.log(del_list[i]);
+                                //最後ならrenderへ 
+                                // if (i==del_list.length-1){
+                                //     console.log(i);
+                                //     collection.find().toArray((err, items) =>{
+                                //         var db_data = items;
+                                //         var data = {
+                                //             title: 'todo-list',
+                                //             content: db_data
+                                //         };
+                                //         res.render('hello_post', data);
+
+                                client.close();      //db.close()じゃないよ
+                                //     });
+                                // }
+                            });
                             var data = {
                                 title: 'todo-list',
                                 content: db_data
                             };
+                            //collection.deleteMany({'todo': del_list[i]});
                             res.render('hello_post', data);
+                            // client.close();      //db.close()じゃないよ
 
-                            client.close();      //db.close()じゃないよ
-                        });
+                        }
+
                     } catch(err){
                     }
                 } else{
